@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const tiendasRoutes = require('../modules/tiendas/routes/tiendaRoutes');
 const consumidoresRoutes = require('../modules/consumidores/routes/consumidorRoutes');
+const productosRoutes = require('../modules/productos/routes/productoRoutes');
 
 const appBackend = express();
 const port = 3000;
@@ -20,6 +21,7 @@ const corsOptions ={
 
 appBackend.use(tiendasRoutes);
 appBackend.use(consumidoresRoutes);
+appBackend.use(productosRoutes);
 
 appBackend.set('port', process.env.PORT || port);
 

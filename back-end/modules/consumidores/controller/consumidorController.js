@@ -24,7 +24,7 @@ controller.createConsumidorC = async (req, res, next) => {
     return res
       .status(201)
       .json(
-        ResponseStructure.success(consumidor, "Consumidor creado con exito")
+        ResponseStructure.success(consumidor, "Consumidor creado con exito.")
       );
   } catch (error) {
     return res.status(500).json(ResponseStructure.error(error.message, 500));
