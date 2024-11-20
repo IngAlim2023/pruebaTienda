@@ -6,8 +6,8 @@ async function createProducto(productoData) {
         const producto = await Producto.create(productoData);
         return producto;
     } catch (error){
-        console.error('Error al crear el producto',error.message);
-        throw new Error('No se pudo crear el producto. Intentalo de nuevo');
+        console.error('Error al crear el producto', error.message);
+        throw new Error('No se pudo crear el producto. Intentalo de nuevo.');
     }
 }
 async function getTiendaProductos(idtienda) {
