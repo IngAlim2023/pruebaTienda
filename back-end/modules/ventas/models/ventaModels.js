@@ -17,11 +17,23 @@ const Venta = {
         if (rows.length === 0) {
           throw new Error("Producto no encontrado");
         }
+
+        
         // Con el precio del producto, calcular el monto de la venta:
         const precioProducto = parseFloat(rows[0].precio_producto);
         const cantidad = parseInt(ventaData.cantidad_productos, 10) || 1;
         const subtotalVenta = precioProducto * cantidad;
-  
+        //NUEVO!!
+        //Ver la cantidad de productos que tengo en el stock:
+        const [stockRows] = await pool.execute(`SELECT stock FROM productos WHERE idproductos = ?`, [ventaData.productos_idproductos]);
+        //Almaceno la cantidad de productos que hay en el inventario para operar con el:
+        const cantidadStock = parseInt(stockRows[0].stock, 10);
+        //Esta validación hay que mejorarla para NO VENDER MÁS PRODUCTO DEL QUE TENGO EN INVENTARIO, Por ahora solo hace la resta del inventario:
+        if(cantidadStock >= cantidad){
+          const stock_actualizado = cantidadStock - cantidad;
+          await pool.execute(`UPDATE productos SET stock = ? WHERE idproductos = ?`, [stock_actualizado, ventaData.productos_idproductos]);
+        }
+        
         // Insertar la venta en la tabla "ventas"
         const [ventaResult] = await pool.execute(
           `INSERT INTO ventas (total, consumidores_idconsumidores) VALUES (?, ?)`,
