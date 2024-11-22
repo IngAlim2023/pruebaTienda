@@ -1,0 +1,70 @@
+.sidenav {
+  width: 240px;
+  backdrop-filter: blur(5px);
+  position: absolute;
+  height: 95vh;
+  padding: 0 30px;
+  transition: transform 0.4s ease-in-out; /* Duración aumentada y transición más fluida */
+  transform: translateX(-100%); /* Inicialmente fuera de la vista */
+}
+.sidenav.active {
+  transform: translateX(0); /* Muestra el menú deslizándolo */
+}
+
+ul {
+  padding: 0;
+}
+ul li {
+  list-style-type: none;
+  margin: 1px 0;
+}
+ul li a {
+  color: #5e6e82;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Easing más suave */
+}
+ul li a:hover,
+ul li a:active {
+  color: #2c7be5;
+  text-decoration: none;
+  background-color: #eae6f8;
+}
+ul li a svg {
+  margin-right: 10px;
+}
+.nav-icon {
+  font-size: 20px;
+}
+/* Media query para pantallas pequeñas (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Sidebar en pantallas pequeñas */
+  .sidenav {
+    width: 65%; /* El sidebar ocupa todo el ancho en pantallas pequeñas */
+    transform: translateX(-100%); /* Inicialmente oculto fuera de la vista */
+    backdrop-filter: blur(2px);
+  }
+
+  /* Cuando el sidebar está activo en pantallas pequeñas */
+  .sidenav.active {
+    transform: translateX(
+      0
+    ); /* El sidebar se desliza para ocupar toda la pantalla */
+  }
+
+  ul li a {
+    font-size: 12px;
+    color: #5e6e82;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  ul li a svg{
+    height:14px;
+  }
+}

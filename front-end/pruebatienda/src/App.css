@@ -1,0 +1,65 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #000;
+  overflow-x: hidden; /*Ver funcionamiento*/
+  background-color: #edf2f9;
+  
+}
+header {
+  display: flex;
+  color: #5e6e82;
+  align-items: center;
+  padding: 20px;
+  backdrop-filter: blur(2px);
+  height: 35px;
+}
+header h3 {
+  margin-left: 15px;
+}
+.menu-icon {
+  cursor: pointer;
+  font-size: 20px;
+}
+.main {
+  height: 95vh;
+  width: 100%;
+  color: #5e6e82;
+  align-items: center;
+  padding: 20px;
+  font-size: 40px;
+  transition: transform 0.4s ease-in-out; /* Suaviza el desplazamiento */
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  header {
+    padding: 15px; /* Menos espacio en pantallas pequeñas */
+    height: 50px; /* Aumentar la altura del header para mayor accesibilidad */
+  }
+
+  .menu-icon {
+    font-size: 25px; /* Aumentar el tamaño del ícono para facilidad de uso */
+  }
+
+  .main {
+    font-size: 24px; /* Reducir el tamaño de fuente en pantallas pequeñas */
+    transition: transform 0.4s ease-in-out; /* Mantener la transición para la animación */
+  }
+
+  /* Cuando el sidebar esté activo en pantallas pequeñas */
+  .side {
+    transform: translateX(0); /* El sidebar ocupa todo el ancho de la pantalla */
+    position: absolute; /* Para que quede sobre el contenido */
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100vh; /* Para que se extienda completamente hacia abajo */
+    padding: 20px;
+  }
+
+  .main.side {
+    transform: translateX(0); /* El main no se desplaza hacia la derecha */
+    padding-left: 0; /* El padding se ajusta */
+    display: none;
+  }
+}
