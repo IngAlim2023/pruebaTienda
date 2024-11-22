@@ -7,18 +7,18 @@ const consumidoresRoutes = require('../modules/consumidores/routes/consumidorRou
 const productosRoutes = require('../modules/productos/routes/productoRoutes');
 const ventasRoutes = require('../modules/ventas/routes/ventaRoutes');
 
-const appBackend = express();
-const port = 3000;
-appBackend.use(cors());
-appBackend.use(morgan('dev'));
-appBackend.use(express.json());
-
-
 const corsOptions ={
     origin:[
         'http://localhost:5173',
     ]
 };
+
+const appBackend = express();
+const port = 3000;
+appBackend.use(cors(corsOptions));
+appBackend.use(morgan('dev'));
+appBackend.use(express.json());
+
 
 appBackend.use(tiendasRoutes);
 appBackend.use(consumidoresRoutes);
